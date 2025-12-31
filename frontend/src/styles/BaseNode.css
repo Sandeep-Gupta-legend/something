@@ -1,0 +1,265 @@
+/* BaseNode.css */
+
+:root {
+  --primary-color: #4f46e5;
+  --primary-dark: #4338ca;
+  --primary-light: #818cf8;
+  --secondary-color: #06b6d4;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --bg-light: #f3f4f6;
+  --bg-white: #ffffff;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.base-node {
+  background: var(--bg-white);
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 200px;
+  min-height: 80px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-dark);
+}
+
+.base-node:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-dark);
+}
+
+.base-node.selected {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1), var(--shadow-hover);
+}
+
+/* Node Header */
+.node-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.node-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Node Content */
+.node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+/* Labels and Inputs */
+.node-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--text-dark);
+}
+
+.node-label > span {
+  font-size: 12px;
+  color: var(--text-dark);
+}
+
+.node-input,
+.node-select {
+  padding: 6px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--text-dark);
+  background: var(--bg-light);
+  transition: all 0.2s ease;
+}
+
+.node-input:focus,
+.node-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: var(--bg-white);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+.node-input::placeholder {
+  color: var(--text-light);
+}
+
+/* Node Descriptions */
+.node-description {
+  font-size: 12px;
+  color: var(--text-light);
+  padding: 8px;
+  background: var(--bg-light);
+  border-left: 3px solid var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Text Node Specific */
+.text-node {
+  --node-accent: var(--secondary-color);
+}
+
+.text-node .node-header {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #0891b2 100%);
+}
+
+.text-node-input {
+  resize: both;
+  overflow: auto;
+  font-family: 'Monaco', 'Courier New', monospace;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.text-node-input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.1);
+}
+
+.variables-info {
+  font-size: 11px;
+  color: var(--warning-color);
+  padding: 4px 6px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 3px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Filter Node Specific */
+.filter-node .node-header {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #d97706 100%);
+}
+
+/* API Node Specific */
+.api-node .node-header {
+  background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%);
+}
+
+/* Merge/Split Node Specific */
+.merge-node .node-header,
+.split-node .node-header {
+  background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+}
+
+/* Process Node Specific */
+.process-node .node-header {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+/* Handle Styling (via Reactflow) */
+.react-flow__handle {
+  background: var(--primary-color);
+  border: 2px solid var(--bg-white);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.react-flow__handle:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.4);
+  transform: scale(1.3);
+}
+
+.react-flow__handle.connectingFrom {
+  background: var(--primary-light);
+}
+
+.react-flow__handle.connecting {
+  background: var(--warning-color);
+}
+
+/* Input/Output specific handle colors */
+.customInput .react-flow__handle {
+  background: var(--success-color);
+}
+
+.customInput .react-flow__handle:hover {
+  background: #059669;
+}
+
+.customOutput .react-flow__handle {
+  background: var(--danger-color);
+}
+
+.customOutput .react-flow__handle:hover {
+  background: #dc2626;
+}
+
+.llm .react-flow__handle {
+  background: var(--primary-color);
+}
+
+.text .react-flow__handle {
+  background: var(--secondary-color);
+}
+
+.text .react-flow__handle:hover {
+  background: #0891b2;
+}
+
+.filter .react-flow__handle {
+  background: var(--warning-color);
+}
+
+.merge .react-flow__handle,
+.split .react-flow__handle {
+  background: var(--success-color);
+}
+
+.api .react-flow__handle {
+  background: var(--danger-color);
+}
+
+.process .react-flow__handle {
+  background: #8b5cf6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .node-input,
+  .node-select {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  .base-node {
+    padding: 8px;
+    min-width: 160px;
+  }
+
+  .node-header {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
